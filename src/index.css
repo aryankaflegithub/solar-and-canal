@@ -1,0 +1,266 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Command Center Dark Theme */
+    --background: 222 47% 5%;
+    --foreground: 210 40% 98%;
+
+    --card: 222 47% 8%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 222 47% 8%;
+    --popover-foreground: 210 40% 98%;
+
+    /* Emerald for Power/Energy */
+    --primary: 160 84% 39%;
+    --primary-foreground: 222 47% 5%;
+    --primary-glow: 160 84% 50%;
+
+    /* Cyan for Water */
+    --secondary: 186 100% 42%;
+    --secondary-foreground: 222 47% 5%;
+    --secondary-glow: 186 100% 55%;
+
+    --muted: 217 33% 17%;
+    --muted-foreground: 215 20% 65%;
+
+    --accent: 217 33% 17%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 210 40% 98%;
+
+    /* Warning/Alert - Amber */
+    --warning: 38 92% 50%;
+    --warning-foreground: 222 47% 5%;
+
+    --border: 217 33% 20%;
+    --input: 217 33% 15%;
+    --ring: 160 84% 39%;
+
+    --radius: 0.75rem;
+
+    /* Glassmorphism */
+    --glass-bg: 222 47% 10% / 0.6;
+    --glass-border: 217 33% 30% / 0.3;
+    --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+
+    /* Gradients */
+    --gradient-power: linear-gradient(135deg, hsl(160 84% 39%), hsl(160 84% 50%));
+    --gradient-water: linear-gradient(135deg, hsl(186 100% 42%), hsl(186 100% 55%));
+    --gradient-dark: linear-gradient(180deg, hsl(222 47% 8%), hsl(222 47% 4%));
+    --gradient-glow-power: 0 0 20px hsl(160 84% 39% / 0.5), 0 0 40px hsl(160 84% 39% / 0.3);
+    --gradient-glow-water: 0 0 20px hsl(186 100% 42% / 0.5), 0 0 40px hsl(186 100% 42% / 0.3);
+
+    /* Sidebar */
+    --sidebar-background: 222 47% 6%;
+    --sidebar-foreground: 210 40% 90%;
+    --sidebar-primary: 160 84% 39%;
+    --sidebar-primary-foreground: 222 47% 5%;
+    --sidebar-accent: 217 33% 15%;
+    --sidebar-accent-foreground: 210 40% 98%;
+    --sidebar-border: 217 33% 15%;
+    --sidebar-ring: 160 84% 39%;
+
+    /* Chart Colors */
+    --chart-1: 160 84% 39%;
+    --chart-2: 186 100% 42%;
+    --chart-3: 38 92% 50%;
+    --chart-4: 280 70% 50%;
+    --chart-5: 340 75% 55%;
+  }
+
+  .dark {
+    --background: 222 47% 5%;
+    --foreground: 210 40% 98%;
+    --card: 222 47% 8%;
+    --card-foreground: 210 40% 98%;
+    --popover: 222 47% 8%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 160 84% 39%;
+    --primary-foreground: 222 47% 5%;
+    --secondary: 186 100% 42%;
+    --secondary-foreground: 222 47% 5%;
+    --muted: 217 33% 17%;
+    --muted-foreground: 215 20% 65%;
+    --accent: 217 33% 17%;
+    --accent-foreground: 210 40% 98%;
+    --destructive: 0 62% 30%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 217 33% 20%;
+    --input: 217 33% 15%;
+    --ring: 160 84% 39%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Inter', sans-serif;
+  }
+
+  h1, h2, h3, h4, h5, h6, .font-display {
+    font-family: 'Orbitron', sans-serif;
+  }
+}
+
+@layer components {
+  .glass-card {
+    @apply bg-card/60 backdrop-blur-xl border border-border/30 rounded-xl;
+    box-shadow: var(--glass-shadow);
+  }
+
+  .glass-card-hover {
+    @apply glass-card transition-all duration-300;
+  }
+
+  .glass-card-hover:hover {
+    @apply border-primary/50;
+    box-shadow: var(--gradient-glow-power);
+  }
+
+  .glow-power {
+    box-shadow: var(--gradient-glow-power);
+  }
+
+  .glow-water {
+    box-shadow: var(--gradient-glow-water);
+  }
+
+  .text-gradient-power {
+    @apply bg-clip-text text-transparent;
+    background-image: var(--gradient-power);
+  }
+
+  .text-gradient-water {
+    @apply bg-clip-text text-transparent;
+    background-image: var(--gradient-water);
+  }
+
+  .pulse-glow {
+    animation: pulseGlow 2s ease-in-out infinite;
+  }
+
+  .pulse-glow-water {
+    animation: pulseGlowWater 2s ease-in-out infinite;
+  }
+
+  @keyframes pulseGlow {
+    0%, 100% {
+      box-shadow: 0 0 15px hsl(160 84% 39% / 0.6), 0 0 30px hsl(160 84% 39% / 0.4);
+    }
+    50% {
+      box-shadow: 0 0 15px hsl(160 84% 39% / 0.6), 0 0 30px hsl(160 84% 39% / 0.4);
+    }
+  }
+
+  @keyframes pulseGlowWater {
+    0%, 100% {
+      box-shadow: 0 0 15px hsl(186 100% 42% / 0.6), 0 0 30px hsl(186 100% 42% / 0.4);
+    }
+    50% {
+      box-shadow: 0 0 15px hsl(186 100% 42% / 0.6), 0 0 30px hsl(186 100% 42% / 0.4);
+    }
+  }
+
+  .grid-pattern {
+    background-image: 
+      linear-gradient(to right, hsl(217 33% 20% / 0.1) 1px, transparent 1px),
+      linear-gradient(to bottom, hsl(217 33% 20% / 0.1) 1px, transparent 1px);
+    background-size: 40px 40px;
+  }
+
+  .scanline {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .scanline::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(
+      to bottom,
+      transparent 50%,
+      hsl(160 84% 39% / 0.03) 50%
+    );
+    background-size: 100% 4px;
+    pointer-events: none;
+  }
+
+  .counter-value {
+    font-family: 'Orbitron', sans-serif;
+    font-variant-numeric: tabular-nums;
+    letter-spacing: 0.05em;
+  }
+
+  .status-indicator {
+    @apply w-2 h-2 rounded-full;
+    animation: statusPulse 1.5s ease-in-out infinite;
+  }
+
+  .status-indicator.active {
+    @apply bg-primary;
+  }
+
+  .status-indicator.warning {
+    @apply bg-warning;
+  }
+
+  .status-indicator.error {
+    @apply bg-destructive;
+  }
+
+  @keyframes statusPulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+  }
+}
+
+/* Mapbox overrides */
+.mapboxgl-popup-content {
+  @apply bg-card border border-border rounded-lg p-4 text-foreground;
+  font-family: 'Inter', sans-serif;
+}
+
+.mapboxgl-popup-tip {
+  border-top-color: hsl(var(--card)) !important;
+}
+
+.mapboxgl-ctrl-group {
+  @apply bg-card border-border;
+}
+
+.mapboxgl-ctrl-group button {
+  @apply text-foreground;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-background;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-muted rounded-full;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-muted-foreground/50;
+}
